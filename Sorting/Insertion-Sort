@@ -1,0 +1,29 @@
+/*
+Insertion sort iterates over an array, growing a sorted array behind the current location.
+It takes each element from the input and finds the spot, up to the current point, where that element belongs( in constant space).
+It does this until it gets to the end of the array.
+
+  Benefits of insertion sort:
+  + stable - A stable sorting algorithm is any algorithm that won’ t change the relative order of items in a list that have the same value.
+  + constance space - sorts your list in place; this is time - space tradeoff, bc we sacrifice the speed of algorithm in order to conserve memory.
+  + adaptive - it works well with arrays that are already partially or fully sorted, which reduces it’ s run time
+*/
+
+const insertionSort = arr => {
+
+  for(let i = 1; i < arr.length; i++) {
+    let currentVal = arr[i];
+    let idxBefore = i - 1;
+
+    while (idxBefore >= 0 && arr[idxBefore] > currentVal) {
+      arr[idxBefore + 1] = arr[idxBefore];
+      idxBefore = idxBefore - 1;
+    }
+
+    arr[idxBefore + 1] = currentVal;
+  }
+
+  return arr;
+}
+
+insertionSort([0,0,1,5,4,2,10,7])
