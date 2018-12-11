@@ -1,0 +1,41 @@
+/*
+Mergesort uses a divide - and - conquer strategy.
+It begins by treating the input list of length N as a set of N“ sublists” of length 1, which are considered to be sorted.
+Adjacent sublists are then“ merged” into sorted sublists of length 2, which are merged into sorted sublists of length 4, and so on, until only a single sorted list remains.
+If N is odd, an extra sublist of length 1 will be left after the first merge, and so on
+This can be implemented using either a recursive(“top - down”) or an iterative(“bottom - up”) approach.
+
+time - complexity: O(n * log(n)) (because it uses a divide and conquer approach but still needs to iterate over the values)
+*/
+
+const mergeSort = array => {
+
+  const merge = (left, right) => {
+    let result = [];
+    let idxL = 0;
+    let idxR = 0;
+
+    while (idxL < left.length && idxR < right.length) {
+      if (left[idxL] < right[idxR]) {
+        result.push(left[idxL]);
+        idxL++;
+      } else {
+        result.push(right[idxR]);
+        idxR++;
+      }
+    }
+    return result.concat(left.slice(idxL)).concat(right.slice(idxR));
+  }
+
+  if (array.length === 1) {
+    return array;
+  }
+
+  let midpoint = Math.floor(array.length / 2);
+  let left = array.slice(0, midpoint);
+  let right = array.slice(midpoint);
+
+  return merge(mergeSort(left), mergeSort(right));
+}
+
+mergeSort([0, 9, 7, 0, 66, 3, 5, 6])

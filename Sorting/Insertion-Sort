@@ -3,6 +3,9 @@ Insertion sort iterates over an array, growing a sorted array behind the current
 It takes each element from the input and finds the spot, up to the current point, where that element belongs( in constant space).
 It does this until it gets to the end of the array.
 
+time-complexity: quadratic O(n^2);
+space-complexity: constant O(1)(constant)(due to sorting your list in-place)
+
   Benefits of insertion sort:
   + stable - A stable sorting algorithm is any algorithm that won’ t change the relative order of items in a list that have the same value.
   + constance space - sorts your list in place; this is time - space tradeoff, bc we sacrifice the speed of algorithm in order to conserve memory.
@@ -26,4 +29,3 @@ const insertionSort = arr => {
   return arr;
 }
 
-insertionSort([0,0,1,5,4,2,10,7])
