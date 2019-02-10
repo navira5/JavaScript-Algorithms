@@ -1,0 +1,60 @@
+var LinkedList = function (initialValue) {
+    if(!initialValue) {
+      this.head = null;
+      this.tail = null;
+    } else {
+      this.head = new this.makeNode(initialValue);
+      this.tail = this.head;
+    }
+};
+
+
+LinkedList.prototype.makeNode = function(value) {
+  this.value = value;
+  this.next = null;
+};
+
+
+LinkedList.prototype.addToTail = function (value) {
+
+  var newNode = new this.makeNode(value);
+  
+  if (!this.head){ 
+    
+    this.head = newNode;
+
+    this.tail = newNode;
+  } else { 
+
+    this.tail.next = newNode;
+   
+    this.tail = this.tail.next;
+  }
+};
+
+LinkedList.prototype.removeHead = function() {
+  
+  var removedNode = this.head;
+  if(!this.head.next) {
+    this.head = null;
+    this.tail = null;
+  } else {
+   
+    this.head = this.head.next;
+  }
+
+  return removedNode;
+};
+
+LinkedList.prototype.contains = function(value) {
+  
+  var node = this.head;
+  while (node) {
+    if (node.value === value) {
+      return true;
+    }
+    node = node.next;
+  }
+  return false;
+
+};
